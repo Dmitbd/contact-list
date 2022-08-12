@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AddUserFriendPopup from "./components/AddUserFriendPopup"
+import EditUserFriendPopup from "./components/EditUserFriendPopup"
+import EditUserPopup from "./components/EditUserPopup"
+import PopupWithFormError from "./components/PopupWithError"
+import Providers from "./components/Providers"
 
-function App() {
+const App = () => {
+
+  // объеденить слайсы логина и авторизации
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-zinc-800 flex">
+      <Providers />
+      <EditUserFriendPopup />
+      <AddUserFriendPopup />
+      <EditUserPopup />
+      <PopupWithFormError />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

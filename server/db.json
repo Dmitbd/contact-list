@@ -1,0 +1,120 @@
+{
+  "users": [
+    {
+      "email": "test1@gmail.com",
+      "password": "$2a$10$O6wQ88e6nPlmfmuoWDt0bOSg2me/lAuQkFuFPYiM65X6yiWVqq9qa",
+      "username": "test1",
+      "id": 1
+    }
+  ],
+  "friends": [
+    {
+      "author": 1,
+      "name": "Свят",
+      "phone": "8-888-888-88-11",
+      "id": 11
+    },
+    {
+      "author": 1,
+      "name": "Маша",
+      "phone": "8-888-888-88-88",
+      "id": 2
+    },
+    {
+      "name": "Игорь",
+      "phone": "8-888-888-88-77",
+      "author": 1,
+      "id": 3
+    },
+    {
+      "name": "Николай",
+      "phone": "8-888-888-88-88",
+      "author": 1,
+      "id": 5
+    },
+    {
+      "name": "Егор",
+      "phone": "8-888-888-88-88",
+      "author": 1,
+      "id": 6
+    },
+    {
+      "name": "Влад",
+      "phone": "8-888-888-88-88",
+      "author": 1,
+      "id": 7
+    },
+    {
+      "name": "Анна",
+      "phone": "8-888-888-88-87",
+      "author": 1,
+      "id": 8
+    },
+    {
+      "name": "Катя",
+      "phone": "8-888-888-88-66",
+      "author": 1,
+      "id": 9
+    },
+    {
+      "name": "Света",
+      "phone": "8-888-888-88-88",
+      "author": 1,
+      "id": 10
+    },
+    {
+      "name": "Vadik",
+      "phone": "5-555-555-55-55",
+      "author": 1,
+      "id": 14
+    },
+    {
+      "name": "Jek",
+      "phone": "3-333-333-33-33",
+      "author": 1,
+      "id": 15
+    },
+    {
+      "name": "Kent",
+      "phone": "3-333-333-33-33",
+      "author": 1,
+      "id": 16
+    },
+    {
+      "name": "Nastya",
+      "phone": "3-333-333-33-00",
+      "author": 1,
+      "id": 18
+    },
+    {
+      "name": "Dada",
+      "phone": "0-000-000-00-00",
+      "author": 1,
+      "id": 19
+    },
+    {
+      "name": "wferg",
+      "phone": "8-000-000-00-00",
+      "author": 3,
+      "id": 20
+    },
+    {
+      "name": "Dfas",
+      "phone": "9-999-999-99-99",
+      "author": 1,
+      "id": 21
+    },
+    {
+      "name": "Fagh",
+      "phone": "0-000-000-00-00",
+      "author": 1,
+      "id": 22
+    },
+    {
+      "name": "Dsfs",
+      "phone": "1-111-111-11-11",
+      "author": 1,
+      "id": 23
+    }
+  ]
+}
