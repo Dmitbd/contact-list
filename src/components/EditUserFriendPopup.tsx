@@ -47,7 +47,7 @@ const EditUserFriendPopup: React.FC = () => {
   }
 
   return (
-    <PopupWithForm isOpen={popupOpener} onClose={handlerPopupClose} onSubmit={editFriendById} title={'Редактировать друга'} buttonText={'Добавить'} name={'edit-friend'}>
+    <PopupWithForm isOpen={popupOpener} onClose={handlerPopupClose} onSubmit={editFriendById} title={'Редактировать друга'} buttonText={'Изменить'} name={'edit-friend'}>
       <input className="input-blue" type='text' placeholder='Name' value={friendForm.name} name='name' onChange={handleChangeInput} ></input>
       <input className="input-blue" type='text' placeholder='Phone' value={friendForm.phone} name='phone' onChange={handleChangeInput} ></input>
     </PopupWithForm>
