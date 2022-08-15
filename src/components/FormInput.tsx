@@ -35,7 +35,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
       rules={rules}
       render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
         <div className="relative">
-          <input
+          <input 
             className={error ? 'input input_error relative' : 'input'}
             value={value || ''}
             onChange={onChange}

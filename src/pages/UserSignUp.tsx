@@ -20,7 +20,7 @@ const UserSignUp: React.FC = () => {
   return (
     <div className="inputs-container">
       <h1 className="text-center text-white mb-4">Введите свои данные для регистрации</h1>
-      <form className="flex flex-col" onSubmit={handleSubmit(userSignUp)}>
+      <form className="flex flex-col" onSubmit={handleSubmit(userSignUp)} >
 
         <FormInput
           name="username"
