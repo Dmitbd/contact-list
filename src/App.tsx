@@ -9,7 +9,7 @@ const App = () => {
   // объеденить слайсы логина и авторизации
 
   return (
-    <div className="bg-zinc-800 flex">
+    <div className="bg-zinc-800 flex w-full m-auto">
       <Providers />
       <EditUserFriendPopup />
       <AddUserFriendPopup />
