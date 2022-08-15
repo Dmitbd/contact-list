@@ -43,7 +43,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
             placeholder={placeholder}
             type={inputType}
           />
-          {name.includes("password") ? <img onClick={handleToggleEye} className="absolute top-2 right-2 w-6 h-6 cursor-pointer" src={icon}></img> : null}
+          {name.includes("password") ? <img onClick={handleToggleEye} className="absolute top-2 right-2 w-6 h-6 cursor-pointer" src={icon} alt={''}></img> : null}
 
           {error && <span className="text_error">{error.message || 'Error'}</span>}
         </div>

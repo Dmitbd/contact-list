@@ -39,7 +39,7 @@ const UserSignUp: React.FC = () => {
           rules={{
             required: requaredField,
             pattern: { value: /.+@.+\..+/i, message: emailIsNotCorrect },
-            minLength: { value: 3, message: minLengthIsSix }
+            minLength: { value: 6, message: minLengthIsSix }
           }}
         />
 

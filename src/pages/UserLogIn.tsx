@@ -3,11 +3,13 @@ import { useAppDispatch } from "../hooks/hooks"
 import { IUser } from "../types/types"
 import { useForm } from "react-hook-form"
 import { userAuthAsync } from "../api/axios"
+import FormInput from "../components/FormInput"
+import { requaredField } from "../utils/constants/formTextConstants"
 
 const UserLogIn: React.FC = () => {
 
   const dispatch = useAppDispatch()
-  const { register, handleSubmit, formState: { errors } } = useForm<IUser>({ mode: "onBlur" })
+  const { handleSubmit, control } = useForm<IUser>({ mode: 'onChange' })
 
   const onSubmit = (loginForm: IUser) => {
     userAuthAsync(loginForm, dispatch)
@@ -20,21 +22,24 @@ const UserLogIn: React.FC = () => {
 
         <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
 
-          <input className="input-blue" placeholder="email"
-            {...register('email', {
-              required: true,
-              pattern: /.+@.+\..+/i,
-            })}
+          <FormInput
+            name="email"
+            placeholder="email"
+            control={control}
+            rules={{
+              required: requaredField
+            }}
           />
-          {errors?.email?.type === 'required' && <p className="err-text">Обязательное поле</p>}
-          {errors?.email?.type === 'pattern' && <p className="err-text">Не правильный формат email</p>}
 
-          <input className="input-blue" placeholder="пароль" type="password"
-            {...register('password', {
-              required: true,
-            })}
+          <FormInput
+            name="password"
+            placeholder="password"
+            type="password"
+            control={control}
+            rules={{
+              required: requaredField
+            }}
           />
-          {errors?.password?.type === 'required' && <p className="err-text">Обязательное поле</p>}
 
           <input className="btn-blue" type='submit' value='Войти' />
           <Link className="btn-blue" to="/signup">Зарегистрироваться</Link>
