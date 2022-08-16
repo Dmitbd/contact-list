@@ -4,6 +4,8 @@ import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 import { addFriendPopupIsOpen } from "../store/openPopupSlice"
 import { isAlert } from "../store/popupWithAlert"
 import { IUserFriend } from "../types/types"
+import { requaredField } from "../utils/constants/formTextConstants"
+import FormInput from "./FormInput"
 import PopupWithForm from "./PopupWithForm"
 
 const PopupWithAddUserFriend: React.FC = () => {
@@ -11,7 +13,7 @@ const PopupWithAddUserFriend: React.FC = () => {
   const dispatch = useAppDispatch()
   const popupOpener = useAppSelector(state => state.popupOpener.addUserFriendPopup)
   const author = useAppSelector(state => state.user.user.id)
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<IUserFriend>({ mode: "onBlur" })
+  const { handleSubmit, control, reset } = useForm<IUserFriend>({ mode: 'onChange' })
 
   const handlerPopupClose = () => {
     dispatch(addFriendPopupIsOpen(false))
@@ -28,22 +30,26 @@ const PopupWithAddUserFriend: React.FC = () => {
   return (
     <PopupWithForm isOpen={popupOpener} onClose={handlerPopupClose} onSubmit={handleSubmit(addNewFriend)} title={'Добавление друга'} buttonText={'Добавить'} name={'add-friend'}>
 
-      <input className="input-blue" placeholder="имя"
-        {...register('name', {
-          required: true,
-        })}
+      <FormInput
+        name="name"
+        placeholder="name"
+        control={control}
+        rules={{
+          required: requaredField,
+        }}
       />
-      {errors?.name?.type === 'required' && <p className="err-text">Обязательное поле</p>}
-      <input className="input-blue" placeholder="8-000-000-00-00"
-        {...register('phone', {
-          required: true,
-          pattern: /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/g,
-          minLength: 15
-        })}
+
+      <FormInput
+        name="phone"
+        placeholder="phone"
+        control={control}
+        rules={{
+          required: requaredField,
+          pattern: {value: /^\d+$/, message: 'Только цифры'},
+          minLength: {value: 11, message: 'Некорректный телефон'},
+          maxLength: {value: 11, message: 'Некорректный телефон'}
+        }}
       />
-      {errors?.phone?.type === 'required' && <p className="err-text">Обязательное поле</p>}
-      {errors?.phone?.type === 'pattern' && <p className="err-text">Введите в формате 8-123-123-12-12</p>}
-      {errors?.phone?.type === 'minLength' && <p className="err-text">Введите в формате 8-123-123-12-12</p>}
 
     </PopupWithForm>
   )
