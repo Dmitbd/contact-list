@@ -6,7 +6,7 @@ import { isAlert } from "../store/popupWithAlert"
 import { IUserFriend } from "../types/types"
 import PopupWithForm from "./PopupWithForm"
 
-const AddUserFriendPopup: React.FC = () => {
+const PopupWithAddUserFriend: React.FC = () => {
 
   const dispatch = useAppDispatch()
   const popupOpener = useAppSelector(state => state.popupOpener.addUserFriendPopup)
@@ -49,4 +49,4 @@ const AddUserFriendPopup: React.FC = () => {
   )
 }
 
-export default AddUserFriendPopup
+export default PopupWithAddUserFriend

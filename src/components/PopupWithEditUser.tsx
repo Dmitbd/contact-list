@@ -7,7 +7,7 @@ import PopupWithForm from "./PopupWithForm"
 import { isAlert } from "../store/popupWithAlert"
 import { EditUserForm } from "../types/types"
 
-const EditUserPopup: React.FC = () => {
+const PopupWithEditUser: React.FC = () => {
 
   const dispatch = useAppDispatch()
   const popupOpener = useAppSelector(state => state.popupOpener.editUserPopup)
@@ -56,4 +56,4 @@ const EditUserPopup: React.FC = () => {
   )
 }
 
-export default EditUserPopup
+export default PopupWithEditUser

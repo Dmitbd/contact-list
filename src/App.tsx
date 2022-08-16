@@ -1,8 +1,8 @@
-import AddUserFriendPopup from "./components/AddUserFriendPopup"
-import EditUserFriendPopup from "./components/EditUserFriendPopup"
-import EditUserPopup from "./components/EditUserPopup"
+import PopupWithAddUserFriend from "./components/PopupWithAddUserFriend"
+import PopupWithEditUserFriend from "./components/PopupWithEditUserFriend"
 import PopupWithFormError from "./components/PopupWithError"
 import Providers from "./components/Providers"
+import PopupWithEditUser from "./components/PopupWithEditUser"
 
 const App = () => {
 
@@ -11,9 +11,9 @@ const App = () => {
   return (
     <div className="bg-zinc-800 flex w-full m-auto">
       <Providers />
-      <EditUserFriendPopup />
-      <AddUserFriendPopup />
-      <EditUserPopup />
+      <PopupWithAddUserFriend />
+      <PopupWithEditUserFriend />
+      <PopupWithEditUser />
       <PopupWithFormError />
     </div>
   )
