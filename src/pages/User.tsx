@@ -33,8 +33,8 @@ const User: React.FC = () => {
     <div className="flex flex-col p-12 mx-auto">
       <header className="flex border-b-2 border-white pb-4">
         <div className="w-80 text-white">
-          <span className="">Ваш профиль:</span>
-          <h1 className="text-sky-500">{userAuthData.user.username}</h1>
+          <span className="cursor-default">Ваш профиль:</span>
+          <h1 className="text-sky-500 cursor-default">{userAuthData.user.username}</h1>
         </div>
         <div>
           <button onClick={editUser} className="small-btn-blue">

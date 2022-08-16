@@ -19,7 +19,7 @@ const UserFriend: React.FC<UserFriendProps> = (props) => {
 
   return (
     <div className="flex border-b-2 py-2">
-      <div className="flex-col">
+      <div className="flex-col cursor-default">
         <div className="flex">
           <p className="text-sky-500 w-24">Имя: </p>
           <p>{name}</p>
