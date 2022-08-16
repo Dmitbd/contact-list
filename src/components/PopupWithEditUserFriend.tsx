@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { editUserFriendByIdAsync } from "../api/axios"
 import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 import { editFriendPopupIsOpen } from "../store/openPopupSlice"
 import PopupWithForm from "./PopupWithForm"
-import { IUserFriend } from "../types/types"
 import { isAlert } from "../store/popupWithAlert"
+import FormInput from "./FormInput"
+import { requaredField } from "../utils/constants/formTextConstants"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { IUserFriend } from "../types/types"
 
 const PopupWithEditUserFriend: React.FC = () => {
+
+  const { handleSubmit, control, setValue, getValues } = useForm<IUserFriend>({ mode: 'onChange' })
 
   const dispatch = useAppDispatch()
   const popupOpener = useAppSelector(state => state.popupOpener.editUserFriendPopup)
@@ -16,29 +21,16 @@ const PopupWithEditUserFriend: React.FC = () => {
     dispatch(editFriendPopupIsOpen(false))
   }
 
-  const [friendForm, setFriendForm] = useState<IUserFriend>({
-    id: 0,
-    name: '',
-    phone: '',
-  })
-
   useEffect(() => {
-    setFriendForm({
-      ...friendForm,
-      id: friendDataById.id,
-      name: friendDataById.name,
-      phone: friendDataById.phone
-    })
+    setValue('name', friendDataById.name)
+    setValue('phone', friendDataById.phone)
   }, [popupOpener])
 
-  const handleChangeInput: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setFriendForm({ ...friendForm, [e.target.name]: e.target.value })
-  }
-
-  const editFriendById: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    e.preventDefault()
-    if (friendForm.name !== friendDataById.name || friendForm.phone !== friendDataById.phone) {
-      editUserFriendByIdAsync(friendForm, dispatch)
+  const editFriendById: SubmitHandler<IUserFriend> = (userFriend): void => {
+    const [name, phone] = getValues(['name', 'phone'])
+    if (name !== friendDataById.name || phone !== friendDataById.phone) {
+      userFriend.id = friendDataById.id
+      editUserFriendByIdAsync(userFriend, dispatch)
       dispatch(editFriendPopupIsOpen(false))
       dispatch(isAlert({ isOpen: true, alertText: 'Данные изменились' }))
     } else {
@@ -47,9 +39,26 @@ const PopupWithEditUserFriend: React.FC = () => {
   }
 
   return (
-    <PopupWithForm isOpen={popupOpener} onClose={handlerPopupClose} onSubmit={editFriendById} title={'Редактировать друга'} buttonText={'Изменить'} name={'edit-friend'}>
-      <input className="input-blue" type='text' placeholder='Name' value={friendForm.name} name='name' onChange={handleChangeInput} ></input>
-      <input className="input-blue" type='text' placeholder='Phone' value={friendForm.phone} name='phone' onChange={handleChangeInput} ></input>
+    <PopupWithForm isOpen={popupOpener} onClose={handlerPopupClose} onSubmit={handleSubmit(editFriendById)} title={'Редактировать друга'} buttonText={'Изменить'} name={'edit-friend'}>
+
+      <FormInput
+        name="name"
+        placeholder="name"
+        control={control}
+        rules={{
+          required: requaredField,
+        }}
+      />
+
+      <FormInput
+        name="phone"
+        placeholder="phone"
+        control={control}
+        rules={{
+          required: requaredField,
+        }}
+      />
+
     </PopupWithForm>
   )
 }

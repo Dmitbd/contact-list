@@ -4,13 +4,14 @@ import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 import { editUserPopupIsOpen } from "../store/openPopupSlice"
 import PopupWithForm from "./PopupWithForm"
 import { isAlert } from "../store/popupWithAlert"
-import { useForm } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form"
 import FormInput from "./FormInput"
 import { requaredField } from "../utils/constants/formTextConstants"
+import { EditUserForm } from "../types/types"
 
 const PopupWithEditUser: React.FC = () => {
 
-  const { handleSubmit, control, setValue, getValues } = useForm({ mode: 'onChange' })
+  const { handleSubmit, control, setValue, getValues } = useForm<EditUserForm>({ mode: 'onChange' })
 
   const dispatch = useAppDispatch()
   const popupOpener = useAppSelector(state => state.popupOpener.editUserPopup)
@@ -25,9 +26,9 @@ const PopupWithEditUser: React.FC = () => {
     setValue('email', userAuthData.user.email)
   }, [popupOpener])
 
-  const editUser = (userData: any) => {
-    const inputValues = getValues(['username', 'email'])
-    if (inputValues[0] !== userAuthData.user.username || inputValues[1] !== userAuthData.user.email) {
+  const editUser: SubmitHandler<EditUserForm> = (userData): void => {
+    const [username, email] = getValues(['username', 'email'])
+    if (username !== userAuthData.user.username || email !== userAuthData.user.email) {
       userData.id = userAuthData.user.id
       editUserAsync(userData, dispatch)
       dispatch(isAlert({ isOpen: true, alertText: 'Данные изменились' }))
