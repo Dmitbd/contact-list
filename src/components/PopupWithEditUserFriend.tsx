@@ -5,7 +5,7 @@ import { editFriendPopupIsOpen } from "../store/openPopupSlice"
 import PopupWithForm from "./PopupWithForm"
 import { isAlert } from "../store/popupWithAlert"
 import FormInput from "./FormInput"
-import { onliNumbers, phoneFailFormat, requaredField } from "../utils/constants/formTextConstants"
+import { minLengthIsTwo, onliNumbers, phoneFailFormat, requaredField } from "../utils/constants/formTextConstants"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { IUserFriend } from "../types/types"
 
@@ -47,6 +47,7 @@ const PopupWithEditUserFriend: React.FC = () => {
         control={control}
         rules={{
           required: requaredField,
+          minLength: { value: 2, message: minLengthIsTwo }
         }}
       />
 

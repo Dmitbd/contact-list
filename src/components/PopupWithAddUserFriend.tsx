@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 import { addFriendPopupIsOpen } from "../store/openPopupSlice"
 import { isAlert } from "../store/popupWithAlert"
 import { IUserFriend } from "../types/types"
-import { onliNumbers, phoneFailFormat, requaredField } from "../utils/constants/formTextConstants"
+import { minLengthIsTwo, onliNumbers, phoneFailFormat, requaredField } from "../utils/constants/formTextConstants"
 import FormInput from "./FormInput"
 import PopupWithForm from "./PopupWithForm"
 
@@ -36,6 +36,7 @@ const PopupWithAddUserFriend: React.FC = () => {
         control={control}
         rules={{
           required: requaredField,
+          minLength: { value: 2, message: minLengthIsTwo }
         }}
       />
 

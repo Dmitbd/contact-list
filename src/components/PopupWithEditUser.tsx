@@ -6,7 +6,7 @@ import PopupWithForm from "./PopupWithForm"
 import { isAlert } from "../store/popupWithAlert"
 import { SubmitHandler, useForm } from "react-hook-form"
 import FormInput from "./FormInput"
-import { requaredField } from "../utils/constants/formTextConstants"
+import { emailIsNotCorrect, minLengthIsSix, minLengthIsTwo, requaredField } from "../utils/constants/formTextConstants"
 import { EditUserForm } from "../types/types"
 
 const PopupWithEditUser: React.FC = () => {
@@ -47,6 +47,7 @@ const PopupWithEditUser: React.FC = () => {
         control={control}
         rules={{
           required: requaredField,
+          minLength: { value: 2, message: minLengthIsTwo }
         }}
       />
 
@@ -55,7 +56,9 @@ const PopupWithEditUser: React.FC = () => {
         placeholder="email"
         control={control}
         rules={{
-          required: requaredField
+          required: requaredField,
+          pattern: { value: /.+@.+\..+/i, message: emailIsNotCorrect },
+          minLength: { value: 6, message: minLengthIsSix }
         }}
       />
 
