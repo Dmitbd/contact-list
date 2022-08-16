@@ -16,15 +16,15 @@ const User: React.FC = () => {
 
   const [searchInput, setSearchInput] = useState('')
 
-  const handleOpenAddFriendPopup = () => {
+  const handleOpenAddFriendPopup = (): void => {
     dispatch(addFriendPopupIsOpen(true))
   }
 
-  const editUser = () => {
+  const editUser = (): void => {
     dispatch(editUserPopupIsOpen(true))
   }
 
-  const handleQuitUser = () => {
+  const handleQuitUser = (): void => {
     dispatch(userExit(true))
     navigate('/', { replace: true })
   }

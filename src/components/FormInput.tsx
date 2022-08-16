@@ -18,7 +18,7 @@ const FormInput: React.FC<FormInputProps> = (props) => {
   const [inputType, setInputType] = useState(type)
   const [icon, setIcon] = useState(eyeHide)
 
-  const handleToggleEye = () => {
+  const handleToggleEye = (): void => {
     if (inputType === 'password') {
       setIcon(eyeShow)
       setInputType('text')

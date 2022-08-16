@@ -11,7 +11,7 @@ const UserLogIn: React.FC = () => {
   const dispatch = useAppDispatch()
   const { handleSubmit, control } = useForm<IUser>({ mode: 'onChange' })
 
-  const onSubmit = (loginForm: IUser) => {
+  const onSubmit = (loginForm: IUser): void => {
     userAuthAsync(loginForm, dispatch)
   }
 

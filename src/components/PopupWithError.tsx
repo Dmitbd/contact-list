@@ -9,7 +9,7 @@ const PopupWithError: React.FC = () => {
 
   if (popupWithAlert.isOpen) {
     open = 'visible'
-    setTimeout(() => {
+    setTimeout((): void => {
       dispatch(isAlert({ isOpen: false, alertText: popupWithAlert.alertText }))
     }, 1000)
   }

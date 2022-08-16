@@ -19,7 +19,7 @@ const PopupWithAddUserFriend: React.FC = () => {
     dispatch(addFriendPopupIsOpen(false))
   }
 
-  const addNewFriend = (newFriend: IUserFriend) => {
+  const addNewFriend = (newFriend: IUserFriend): void => {
     newFriend = { name: newFriend.name, phone: newFriend.phone, author: author, id: newFriend.id }
     addUserFriendAsync(newFriend, dispatch)
     dispatch(isAlert({ isOpen: true, alertText: 'Друг добавлен' }))

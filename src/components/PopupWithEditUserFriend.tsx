@@ -17,7 +17,7 @@ const PopupWithEditUserFriend: React.FC = () => {
   const popupOpener = useAppSelector(state => state.popupOpener.editUserFriendPopup)
   const friendDataById = useAppSelector(state => state.userFriend)
 
-  const handlerPopupClose = () => {
+  const handlerPopupClose = (): void => {
     dispatch(editFriendPopupIsOpen(false))
   }
 

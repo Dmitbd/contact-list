@@ -20,12 +20,12 @@ const UserFriendsContainer: React.FC<IProps> = ({ searchInput }) => {
     return friend.name.toLowerCase().includes(searchInput.toLowerCase())
   })
 
-  const handlePopupOpen = (friendData: IUserFriend) => {
+  const handlePopupOpen = (friendData: IUserFriend): void => {
     dispatch(editFriendPopupIsOpen(true))
     dispatch(userFriend(friendData))
   }
 
-  const deleteFriendById = (friendId: string | number) => {
+  const deleteFriendById = (friendId: string | number): void => {
     deleteFriendByIdAsync(friendId, dispatch)
   }
 
