@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 import { addFriendPopupIsOpen } from "../store/openPopupSlice"
 import { isAlert } from "../store/popupWithAlert"
 import { IUserFriend } from "../types/types"
-import { requaredField } from "../utils/constants/formTextConstants"
+import { onliNumbers, phoneFailFormat, requaredField } from "../utils/constants/formTextConstants"
 import FormInput from "./FormInput"
 import PopupWithForm from "./PopupWithForm"
 
@@ -45,9 +45,9 @@ const PopupWithAddUserFriend: React.FC = () => {
         control={control}
         rules={{
           required: requaredField,
-          pattern: {value: /^\d+$/, message: 'Только цифры'},
-          minLength: {value: 11, message: 'Некорректный телефон'},
-          maxLength: {value: 11, message: 'Некорректный телефон'}
+          pattern: { value: /^\d+$/, message: onliNumbers },
+          minLength: { value: 11, message: phoneFailFormat },
+          maxLength: { value: 11, message: phoneFailFormat }
         }}
       />
 

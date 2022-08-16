@@ -53,7 +53,7 @@ export const addUserFriendAsync = async (newFriend: IUserFriend, dispatch: Funct
   }
 }
 
-export const deleteFriendByIdAsync = async (friendId: number | string, dispatch: Function): Promise<void> => {
+export const deleteFriendByIdAsync = async (friendId: number, dispatch: Function): Promise<void> => {
   try {
     await axios.delete(`${BASE_URL}/friends/${friendId}`)
     dispatch(deleteUserFriend(friendId))

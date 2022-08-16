@@ -7,7 +7,7 @@ const initialState: UserFriendState = {
   name: '',
   phone: '',
   author: '',
-  id: ''
+  id: 0
 }
 
 const popupOpenedSlice = createSlice({

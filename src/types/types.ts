@@ -7,9 +7,9 @@ export type IUser = {
 
 export type IUserFriend = {
   name: string
-  phone: string | number
+  phone: string
   author?: string | number
-  id: string | number
+  id: number
 }
 
 export type EditUserForm = {

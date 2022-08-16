@@ -25,7 +25,7 @@ const UserFriendsContainer: React.FC<IProps> = ({ searchInput }) => {
     dispatch(userFriend(friendData))
   }
 
-  const deleteFriendById = (friendId: string | number): void => {
+  const deleteFriendById = (friendId: number): void => {
     deleteFriendByIdAsync(friendId, dispatch)
   }
 

@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type UserFriends = Array<{
   name: string,
-  phone: string | number,
+  phone: string,
   author: string | number,
-  id: string | number
+  id: number
 }>
 
 type UserFriendsState = UserFriends
@@ -13,15 +13,15 @@ const initialState: UserFriendsState = []
 
 type INewUserFriend = {
   name: string,
-  phone: string | number,
+  phone: string,
   author: string | number,
-  id: string | number
+  id: number
 }
 
 type EditUserFriend = {
   name: string,
-  phone: string | number,
-  id: string | number
+  phone: string,
+  id: number
 }
 
 const userFriendsSlice = createSlice({

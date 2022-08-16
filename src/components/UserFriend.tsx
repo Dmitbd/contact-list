@@ -5,11 +5,11 @@ import { IUserFriend } from "../types/types"
 type UserFriendProps = {
   friend: {
     name: string,
-    phone: string | number,
-    id: string | number,
+    phone: string,
+    id: number,
   }
   handlePopupOpen: (friendData: IUserFriend) => void
-  deleteFriendById: (friendId: string | number) => void
+  deleteFriendById: (friendId: number) => void
 }
 
 const UserFriend: React.FC<UserFriendProps> = (props) => {
