@@ -5,6 +5,8 @@ type UserFrom = {
   email: string
 }
 
+type UserSignUp = string
+
 type UserAuth = {
   accessToken: string,
   username: string,
@@ -29,6 +31,9 @@ const userAuthSlice = createSlice({
   name: 'userAuth',
   initialState,
   reducers: {
+    userSignUp(state, action: PayloadAction<UserSignUp>) {
+      state.email = action.payload
+    },
     userAuth(state, action: PayloadAction<UserAuth>) {
       localStorage.setItem('email', action.payload.email)
       localStorage.setItem('password', action.payload.password)
@@ -54,6 +59,6 @@ const userAuthSlice = createSlice({
   }
 })
 
-export const { userAuth, editUser, userExit } = userAuthSlice.actions
+export const { userSignUp, userAuth, editUser, userExit } = userAuthSlice.actions
 
 export default userAuthSlice.reducer

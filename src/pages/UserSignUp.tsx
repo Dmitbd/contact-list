@@ -1,20 +1,22 @@
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { userSignUpAsync } from "../api/axios"
 import FormInput from "../components/FormInput"
 import { useAppDispatch } from "../hooks/hooks"
 import { User } from "../types/types"
-import { emailIsNotCorrect, minLengthIsSix, minLengthIsTwo, passwordDoNotMatch, requaredField } from "../utils/constants/formTextConstants"
+import { emailIsNotCorrect, minLengthIsSix, minLengthIsTwo, onlyLatin, passwordDoNotMatch, requaredField } from "../utils/constants/formTextConstants"
 
 const UserSignUp: React.FC = () => {
 
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const { handleSubmit, control, reset, watch } = useForm<User>({ mode: 'onChange' })
 
   const userSignUp = (signUpForm: User): void => {
     userSignUpAsync(signUpForm, dispatch)
     reset()
+    navigate('/login')
   }
 
   return (
@@ -28,7 +30,8 @@ const UserSignUp: React.FC = () => {
           control={control}
           rules={{
             required: requaredField,
-            minLength: { value: 2, message: minLengthIsTwo }
+            minLength: { value: 2, message: minLengthIsTwo },
+            pattern: {value: /^[a-zA-Z]+$/, message: onlyLatin}
           }}
         />
 

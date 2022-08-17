@@ -5,3 +5,4 @@ export const minLengthIsTwo = 'Минимальная длинна 2 симво�
 export const passwordDoNotMatch = 'Пароли не совпадают'
 export const onliNumbers = 'Только цифры'
 export const phoneFailFormat = 'Некорректный телефон'
+export const onlyLatin = 'Только латинские буквы'

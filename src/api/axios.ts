@@ -1,6 +1,6 @@
 import axios from "axios"
 import { isAlert } from "../store/popupWithAlert"
-import { editUser, userAuth } from "../store/userAuthSlice"
+import { editUser, userAuth, userSignUp } from "../store/userAuthSlice"
 import { addUserFriend, deleteUserFriend, editUserFriend, getUserFriends } from "../store/userFriendsSlice"
 import { EditUserForm, User, UserFriend } from "../types/types"
 
@@ -10,6 +10,7 @@ export const userSignUpAsync = async (editForm: User, dispatch: Function): Promi
   try {
     const response = await axios.post(`${BASE_URL}/users`, editForm)
     dispatch(isAlert({ isOpen: true, alertText: `Пользователь ${response.data.user.username} создан` }))
+    dispatch(userSignUp(response.data.user.email))
   } catch (error) {
     dispatch(isAlert({ isOpen: true, alertText: `Ошибка` }))
   }

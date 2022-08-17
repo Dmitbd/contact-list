@@ -1,19 +1,27 @@
 import { Link } from "react-router-dom"
-import { useAppDispatch } from "../hooks/hooks"
+import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 import { User } from "../types/types"
 import { useForm } from "react-hook-form"
 import { userAuthAsync } from "../api/axios"
 import FormInput from "../components/FormInput"
 import { requaredField } from "../utils/constants/formTextConstants"
+import { useEffect } from "react"
 
 const UserLogIn: React.FC = () => {
 
+  const userSignUp = useAppSelector(state => state.user.email)
   const dispatch = useAppDispatch()
-  const { handleSubmit, control } = useForm<User>({ mode: 'onChange' })
+  const { handleSubmit, control, setValue } = useForm<User>({ mode: 'onChange' })
 
   const onSubmit = (loginForm: User): void => {
     userAuthAsync(loginForm, dispatch)
   }
+
+  useEffect(() => {
+    if (userSignUp) {
+      setValue('email', userSignUp)
+    }
+  }, [userSignUp])
 
   return (
     <div className="inputs-container">
