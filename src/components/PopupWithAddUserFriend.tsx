@@ -3,7 +3,7 @@ import { addUserFriendAsync } from "../api/axios"
 import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 import { addFriendPopupIsOpen } from "../store/openPopupSlice"
 import { isAlert } from "../store/popupWithAlert"
-import { IUserFriend } from "../types/types"
+import { UserFriend } from "../types/types"
 import { minLengthIsTwo, onliNumbers, phoneFailFormat, requaredField } from "../utils/constants/formTextConstants"
 import FormInput from "./FormInput"
 import PopupWithForm from "./PopupWithForm"
@@ -12,14 +12,14 @@ const PopupWithAddUserFriend: React.FC = () => {
 
   const dispatch = useAppDispatch()
   const popupOpener = useAppSelector(state => state.popupOpener.addUserFriendPopup)
-  const author = useAppSelector(state => state.user.user.id)
-  const { handleSubmit, control, reset } = useForm<IUserFriend>({ mode: 'onChange' })
+  const author = useAppSelector(state => state.user.id)
+  const { handleSubmit, control, reset } = useForm<UserFriend>({ mode: 'onChange' })
 
   const handlerPopupClose = () => {
     dispatch(addFriendPopupIsOpen(false))
   }
 
-  const addNewFriend = (newFriend: IUserFriend): void => {
+  const addNewFriend = (newFriend: UserFriend): void => {
     newFriend = { name: newFriend.name, phone: newFriend.phone, author: author, id: newFriend.id }
     addUserFriendAsync(newFriend, dispatch)
     dispatch(isAlert({ isOpen: true, alertText: 'Друг добавлен' }))

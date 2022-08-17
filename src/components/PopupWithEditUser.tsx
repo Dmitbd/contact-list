@@ -22,14 +22,14 @@ const PopupWithEditUser: React.FC = () => {
   }
 
   useEffect(() => {
-    setValue('username', userAuthData.user.username)
-    setValue('email', userAuthData.user.email)
+    setValue('username', userAuthData.username)
+    setValue('email', userAuthData.email)
   }, [popupOpener])
 
   const editUser: SubmitHandler<EditUserForm> = (userData): void => {
     const [username, email] = getValues(['username', 'email'])
-    if (username !== userAuthData.user.username || email !== userAuthData.user.email) {
-      userData.id = userAuthData.user.id
+    if (username !== userAuthData.username || email !== userAuthData.email) {
+      userData.id = userAuthData.id
       editUserAsync(userData, dispatch)
       dispatch(isAlert({ isOpen: true, alertText: 'Данные изменились' }))
       dispatch(editUserPopupIsOpen(false))

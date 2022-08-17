@@ -1,18 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type IUserFrom = {
+type UserFrom = {
   username: string,
   email: string
 }
 
 type UserAuth = {
   accessToken: string,
-  user: {
-    username: string,
-    email: string,
-    password: string,
-    id: number,
-  },
+  username: string,
+  email: string,
+  password: string,
+  id: number,
   auth: boolean
 }
 
@@ -20,12 +18,10 @@ type UserAuthState = UserAuth
 
 const initialState: UserAuthState = {
   accessToken: '',
-  user: {
-    username: '',
-    email: '',
-    password: '',
-    id: 0,
-  },
+  username: '',
+  email: '',
+  password: '',
+  id: 0,
   auth: false
 }
 
@@ -34,20 +30,26 @@ const userAuthSlice = createSlice({
   initialState,
   reducers: {
     userAuth(state, action: PayloadAction<UserAuth>) {
-      const [accessToken, user] = [action.payload.accessToken, action.payload.user]
-      state.accessToken = accessToken
-      state.user = user
-      state.auth = true
+      localStorage.setItem('email', action.payload.email)
+      localStorage.setItem('password', action.payload.password)
+      return state = action.payload
     },
     userExit(state, action: PayloadAction<boolean>) {
       if (action.payload) {
+        localStorage.removeItem('email')
+        localStorage.removeItem('password')
+        state.accessToken = ''
+        state.username = ''
+        state.email = ''
+        state.password = ''
+        state.id = 0
         state.auth = false
       }
     },
-    editUser(state, action: PayloadAction<IUserFrom>) {
+    editUser(state, action: PayloadAction<UserFrom>) {
       const [username, email] = [action.payload.username, action.payload.email]
-      state.user.username = username
-      state.user.email = email
+      state.username = username
+      state.email = email
     }
   }
 })

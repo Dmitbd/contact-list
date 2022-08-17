@@ -16,8 +16,8 @@ const Providers: React.FC = () => {
   const [paths, setPaths] = useState<string>('')
   useEffect(() => {
     if (userAuthData.auth) {
-      setPaths(`/user/:id${userAuthData.user.id}`)
-      navigate(`/user/:id${userAuthData.user.id}`)
+      setPaths(`/user/:id${userAuthData.id}`)
+      navigate(`/user/:id${userAuthData.id}`)
     }
   }, [userAuthData])
 

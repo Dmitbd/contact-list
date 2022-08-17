@@ -1,11 +1,11 @@
-export type IUser = {
+export type User = {
   email: string,
   password: string,
   username?: string,
   id?: number | string
 }
 
-export type IUserFriend = {
+export type UserFriend = {
   name: string
   phone: string
   author?: string | number

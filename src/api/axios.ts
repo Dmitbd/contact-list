@@ -2,11 +2,11 @@ import axios from "axios"
 import { isAlert } from "../store/popupWithAlert"
 import { editUser, userAuth } from "../store/userAuthSlice"
 import { addUserFriend, deleteUserFriend, editUserFriend, getUserFriends } from "../store/userFriendsSlice"
-import { EditUserForm, IUser, IUserFriend } from "../types/types"
+import { EditUserForm, User, UserFriend } from "../types/types"
 
 const BASE_URL = 'http://localhost:3001'
 
-export const userSignUpAsync = async (editForm: IUser, dispatch: Function): Promise<void> => {
+export const userSignUpAsync = async (editForm: User, dispatch: Function): Promise<void> => {
   try {
     const response = await axios.post(`${BASE_URL}/users`, editForm)
     dispatch(isAlert({ isOpen: true, alertText: `Пользователь ${response.data.user.username} создан` }))
@@ -25,10 +25,18 @@ export const editUserAsync = async (editForm: EditUserForm, dispatch: Function):
   }
 }
 
-export const userAuthAsync = async (loginForm: IUser, dispatch: Function): Promise<void> => {
+export const userAuthAsync = async (loginForm: User, dispatch: Function): Promise<void> => {
   try {
     const response = await axios.post(`${BASE_URL}/login`, loginForm)
-    dispatch(userAuth(response.data))
+    const userData = {
+      accessToken: response.data.accessToken,
+      username: response.data.user.username,
+      email: response.data.user.email,
+      password: loginForm.password,
+      id: response.data.user.id,
+      auth: true
+    }
+    dispatch(userAuth(userData))
   } catch (error) {
     dispatch(isAlert({ isOpen: true, alertText: 'Неверный email или password' }))
   }
@@ -43,7 +51,7 @@ export const rednerUserFriendsAsync = async (userId: number, dispatch: Function)
   }
 }
 
-export const addUserFriendAsync = async (newFriend: IUserFriend, dispatch: Function): Promise<void> => {
+export const addUserFriendAsync = async (newFriend: UserFriend, dispatch: Function): Promise<void> => {
   try {
     const response = await axios.post(`${BASE_URL}/friends`, newFriend)
     dispatch(addUserFriend(response.data))
@@ -63,7 +71,7 @@ export const deleteFriendByIdAsync = async (friendId: number, dispatch: Function
   }
 }
 
-export const editUserFriendByIdAsync = async (userFriend: IUserFriend, dispatch: Function): Promise<void> => {
+export const editUserFriendByIdAsync = async (userFriend: UserFriend, dispatch: Function): Promise<void> => {
   try {
     const response = await axios.patch(`${BASE_URL}/friends/${userFriend.id}`,
       { name: userFriend.name, phone: userFriend.phone })

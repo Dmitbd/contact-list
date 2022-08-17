@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUserFriend } from "../types/types";
+import { UserFriend } from "../types/types";
 
-type UserFriendState = IUserFriend
+type UserFriendState = UserFriend
 
 const initialState: UserFriendState = {
   name: '',
@@ -14,7 +14,7 @@ const popupOpenedSlice = createSlice({
   name: 'userFriend',
   initialState,
   reducers: {
-    userFriend(state, action: PayloadAction<IUserFriend>) {
+    userFriend(state, action: PayloadAction<UserFriend>) {
       return state = action.payload
     }
   }

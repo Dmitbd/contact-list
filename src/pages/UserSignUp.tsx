@@ -3,16 +3,16 @@ import { Link } from "react-router-dom"
 import { userSignUpAsync } from "../api/axios"
 import FormInput from "../components/FormInput"
 import { useAppDispatch } from "../hooks/hooks"
-import { IUser } from "../types/types"
+import { User } from "../types/types"
 import { emailIsNotCorrect, minLengthIsSix, minLengthIsTwo, passwordDoNotMatch, requaredField } from "../utils/constants/formTextConstants"
 
 const UserSignUp: React.FC = () => {
 
   const dispatch = useAppDispatch()
 
-  const { handleSubmit, control, reset, watch } = useForm<IUser>({ mode: 'onChange' })
+  const { handleSubmit, control, reset, watch } = useForm<User>({ mode: 'onChange' })
 
-  const userSignUp = (signUpForm: IUser): void => {
+  const userSignUp = (signUpForm: User): void => {
     userSignUpAsync(signUpForm, dispatch)
     reset()
   }

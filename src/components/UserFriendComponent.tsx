@@ -1,6 +1,6 @@
 import circleClose from '../images/circle-close.svg'
 import edit from '../images/edit.svg'
-import { IUserFriend } from "../types/types"
+import { UserFriend } from "../types/types"
 
 type UserFriendProps = {
   friend: {
@@ -8,11 +8,11 @@ type UserFriendProps = {
     phone: string,
     id: number,
   }
-  handlePopupOpen: (friendData: IUserFriend) => void
+  handlePopupOpen: (friendData: UserFriend) => void
   deleteFriendById: (friendId: number) => void
 }
 
-const UserFriend: React.FC<UserFriendProps> = (props) => {
+const UserFriendComponent: React.FC<UserFriendProps> = (props) => {
 
   const { friend, handlePopupOpen, deleteFriendById } = props
   const { name, phone, id } = friend
@@ -41,4 +41,4 @@ const UserFriend: React.FC<UserFriendProps> = (props) => {
   )
 }
 
-export default UserFriend
+export default UserFriendComponent

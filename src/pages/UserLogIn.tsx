@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAppDispatch } from "../hooks/hooks"
-import { IUser } from "../types/types"
+import { User } from "../types/types"
 import { useForm } from "react-hook-form"
 import { userAuthAsync } from "../api/axios"
 import FormInput from "../components/FormInput"
@@ -9,9 +9,9 @@ import { requaredField } from "../utils/constants/formTextConstants"
 const UserLogIn: React.FC = () => {
 
   const dispatch = useAppDispatch()
-  const { handleSubmit, control } = useForm<IUser>({ mode: 'onChange' })
+  const { handleSubmit, control } = useForm<User>({ mode: 'onChange' })
 
-  const onSubmit = (loginForm: IUser): void => {
+  const onSubmit = (loginForm: User): void => {
     userAuthAsync(loginForm, dispatch)
   }
 

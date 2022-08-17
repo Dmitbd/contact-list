@@ -2,9 +2,9 @@ import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 import { editFriendPopupIsOpen } from "../store/openPopupSlice"
 import { userFriend } from "../store/userFriendSlice"
-import { IUserFriend } from "../types/types"
+import { UserFriend } from "../types/types"
 import { deleteFriendByIdAsync, rednerUserFriendsAsync } from "../api/axios"
-import UserFriend from "./UserFriend"
+import UserFriendComponent from "./UserFriendComponent"
 
 interface IProps {
   searchInput: string
@@ -13,14 +13,14 @@ interface IProps {
 const UserFriendsContainer: React.FC<IProps> = ({ searchInput }) => {
 
   const dispatch = useAppDispatch()
-  const userId = useAppSelector(state => state.user.user.id)
+  const userId = useAppSelector(state => state.user.id)
   const friends = useAppSelector(state => state.userFriends)
 
   const filterFriends = friends.filter(friend => {
     return friend.name.toLowerCase().includes(searchInput.toLowerCase())
   })
 
-  const handlePopupOpen = (friendData: IUserFriend): void => {
+  const handlePopupOpen = (friendData: UserFriend): void => {
     dispatch(editFriendPopupIsOpen(true))
     dispatch(userFriend(friendData))
   }
@@ -36,13 +36,14 @@ const UserFriendsContainer: React.FC<IProps> = ({ searchInput }) => {
   return (
     <div className="text-white">
       {
-        filterFriends.map((friend: IUserFriend, index: number) => {
+        filterFriends.map((friend: UserFriend, index: number) => {
           return (
-            <UserFriend
+            <UserFriendComponent
               key={index}
               friend={friend}
               handlePopupOpen={handlePopupOpen}
-              deleteFriendById={deleteFriendById} />
+              deleteFriendById={deleteFriendById}
+            />
           )
         })
       }

@@ -7,11 +7,11 @@ import { isAlert } from "../store/popupWithAlert"
 import FormInput from "./FormInput"
 import { minLengthIsTwo, onliNumbers, phoneFailFormat, requaredField } from "../utils/constants/formTextConstants"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { IUserFriend } from "../types/types"
+import { UserFriend } from "../types/types"
 
 const PopupWithEditUserFriend: React.FC = () => {
 
-  const { handleSubmit, control, setValue, getValues } = useForm<IUserFriend>({ mode: 'onChange' })
+  const { handleSubmit, control, setValue, getValues } = useForm<UserFriend>({ mode: 'onChange' })
 
   const dispatch = useAppDispatch()
   const popupOpener = useAppSelector(state => state.popupOpener.editUserFriendPopup)
@@ -26,7 +26,7 @@ const PopupWithEditUserFriend: React.FC = () => {
     setValue('phone', friendDataById.phone)
   }, [popupOpener])
 
-  const editFriendById: SubmitHandler<IUserFriend> = (userFriend): void => {
+  const editFriendById: SubmitHandler<UserFriend> = (userFriend): void => {
     const [name, phone] = getValues(['name', 'phone'])
     if (name !== friendDataById.name || phone !== friendDataById.phone) {
       userFriend.id = friendDataById.id
