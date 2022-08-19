@@ -1,4 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+
+// стейт с массивом друзей
 
 type UserFriends = Array<{
   name: string,

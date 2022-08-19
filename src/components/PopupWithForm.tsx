@@ -13,7 +13,7 @@ const PopupWithForm: React.FC<IPropsPopupWithForm> = (props) => {
   const { isOpen, onClose, onSubmit, title, buttonText, name, children } = props
 
   let open = ''
-
+// получает определенный isOpen стейт и вешает класс открытия нужного попапа
   if (isOpen) {
     open = 'popup_opened'
   }

@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+// хранит данные о пользователе при логине, регистрации и очищает при выходе
+
 type UserFrom = {
   username: string,
   email: string

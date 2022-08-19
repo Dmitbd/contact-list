@@ -1,6 +1,9 @@
 import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 import { isAlert } from "../store/popupWithAlert"
 
+// попап с ошибкой
+// если isOpen = true добавляет класс видимости, затем убирает его и возвращает hiden для скрытия
+
 const PopupWithError: React.FC = () => {
 
   const dispatch = useAppDispatch()

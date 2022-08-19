@@ -14,6 +14,7 @@ const Providers: React.FC = () => {
   const navigate = useNavigate()
 
   const [paths, setPaths] = useState<string>('')
+  // проверяет авторизацию и создает роутинг на страницу пользователя
   useEffect(() => {
     if (userAuthData.auth) {
       setPaths(`/user/:id${userAuthData.id}`)

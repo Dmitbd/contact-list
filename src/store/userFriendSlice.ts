@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserFriend } from "../types/types";
 
+// для хранения данных о определенном друге
+
 type UserFriendState = UserFriend
 
 const initialState: UserFriendState = {

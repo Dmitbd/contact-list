@@ -17,6 +17,7 @@ const UserLogIn: React.FC = () => {
     userAuthAsync(loginForm, dispatch)
   }
 
+// если регистрировался заполняет поле email на авторизации
   useEffect(() => {
     if (userSignUp) {
       setValue('email', userSignUp)

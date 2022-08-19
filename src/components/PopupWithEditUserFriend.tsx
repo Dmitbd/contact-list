@@ -21,6 +21,7 @@ const PopupWithEditUserFriend: React.FC = () => {
     dispatch(editFriendPopupIsOpen(false))
   }
 
+// заполянет поля данными друга
   useEffect(() => {
     setValue('name', friendDataById.name)
     setValue('phone', friendDataById.phone)

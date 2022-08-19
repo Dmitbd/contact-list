@@ -21,6 +21,7 @@ const PopupWithEditUser: React.FC = () => {
     dispatch(editUserPopupIsOpen(false))
   }
 
+// заполняет поля данными пользователя
   useEffect(() => {
     setValue('username', userAuthData.username)
     setValue('email', userAuthData.email)

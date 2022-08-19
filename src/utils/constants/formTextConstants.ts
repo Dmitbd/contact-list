@@ -1,3 +1,4 @@
+// константы с текстом для ошибок валидации
 export const requaredField = 'Это обязательное поле'
 export const emailIsNotCorrect = 'Некорректный email'
 export const minLengthIsSix = 'Минимальная длинна 6 символов'

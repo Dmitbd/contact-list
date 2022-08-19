@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+// попап с ошибками или данными, принимает строку и условие для открытия 
+
 type PopupWithAlert = {
   isOpen: boolean,
   alertText?: string

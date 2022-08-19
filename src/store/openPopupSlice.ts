@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+// попапы с условием открытия true / false
+
 type PopupOpened = {
   addUserFriendPopup: boolean,
   editUserFriendPopup: boolean,

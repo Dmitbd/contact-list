@@ -15,7 +15,8 @@ const UserFriendsContainer: React.FC<IProps> = ({ searchInput }) => {
   const dispatch = useAppDispatch()
   const userId = useAppSelector(state => state.user.id)
   const friends = useAppSelector(state => state.userFriends)
-
+  
+// принимает value из инпута поиска друзей 
   const filterFriends = friends.filter(friend => {
     return friend.name.toLowerCase().includes(searchInput.toLowerCase())
   })
